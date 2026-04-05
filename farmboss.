@@ -1,3 +1,6 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/farmboss."))(Settings)
+  end
+  })
 -- bật / tắt
 local AutoFarm = false
 
