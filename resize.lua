@@ -1,1 +1,102 @@
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua")))()
 
+       local Window = MakeWindow({
+         Hub = {
+         Title = "TRISTANVNMOD",
+         Animation = "Youtube: TRISTANVN"
+         },
+        Key = {
+        KeySystem = false,
+        Title = "HeThongKhoa",
+        Description = "",
+        KeyLink = "",
+        Keys = {"1234"},
+        Notifi = {
+        Notifications = true,
+        CorrectKey = "Running the Script...",
+       Incorrectkey = "The key is incorrect",
+       CopyKeyLink = "Copied to Clipboard"
+      }
+    }
+  })
+
+       MinimizeButton({
+       Image = "https://tr.rbxcdn.com/180DAY-06ee6472e0fb2bccc53d21ef97ea9d55/150/150/Image/Webp/noFilter",
+       Size = {60, 15},
+       Color = Color3.fromRGB(0, 255, 200),
+       Corner = true,
+       Stroke = false,
+       StrokeColor = Color3.fromRGB(255, 0, 0)
+      })
+      
+------ Tab
+     local Tab1o = MakeTab({Name = "Script Farm Boss"})
+     local Tab2o = MakeTab({Name = "Script Speed Super"})
+     local Tab3o = MakeTab({Name = "ZoomMod"})
+     
+------- BUTTON
+    
+    AddButton(Tab1o, {
+     Name = "Start Farm",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Haki";
+  Translator = true; -- true/false
+}
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/farmboss."))(Settings)
+  end
+  })
+
+    AddButton(Tab2o, {
+    Name = "Start S (Speed + Farm)",
+    Callback = function()
+
+        -- Chinh toc do chay
+        local player = game.Players.LocalPlayer
+        local char = player.Character or player.CharacterAdded:Wait()
+        local humanoid = char:WaitForChild("Humanoid")
+
+        humanoid.WalkSpeed = 50 --  chinh so nay (16 mac dinh)
+
+        -- Settings farm
+        local Settings = {
+            JoinTeam = "Haki";
+            Translator = true;
+        }
+
+        -- Load script farm boss
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/speed"))(Settings)
+
+    end
+})
+
+local currentSize = 100 -- size ban dau
+
+-- Tang size
+AddButton(Tab3o, {
+    Name = "Size +2",
+    Callback = function()
+        currentSize = currentSize + 2
+
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/resize.lua"))()({
+            Size = currentSize
+        })
+    end
+})
+
+-- Giam size
+AddButton(Tab3o, {
+    Name = "Size -2",
+    Callback = function()
+        currentSize = currentSize - 2
+
+        if currentSize < 0.5 then
+            currentSize = 0.5 -- kh
+        end
+
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/resize.lua"))()({
+            Size = currentSize
+        })
+    end
+})
