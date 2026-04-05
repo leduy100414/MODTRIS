@@ -1,51 +1,102 @@
-loadstring(game:HttpGet(("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/farmboss.")))()
--- bật / tắt
-local AutoFarm = false
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua")))()
 
-b:Toggle("💀 Auto Farm Boss", function(v)
-    AutoFarm = v
-end)
+       local Window = MakeWindow({
+         Hub = {
+         Title = "TRISTANVNMOD",
+         Animation = "Youtube: TRISTANVN"
+         },
+        Key = {
+        KeySystem = false,
+        Title = "HeThongKhoa",
+        Description = "",
+        KeyLink = "",
+        Keys = {"1234"},
+        Notifi = {
+        Notifications = true,
+        CorrectKey = "Running the Script...",
+       Incorrectkey = "The key is incorrect",
+       CopyKeyLink = "Copied to Clipboard"
+      }
+    }
+  })
 
--- tìm boss
-function GetBoss()
-    for _, v in pairs(workspace.Enemies:GetChildren()) do
-        if v:FindFirstChild("Humanoid") 
-        and v:FindFirstChild("HumanoidRootPart") 
-        and v.Humanoid.Health > 0 then
-            
-            if string.find(v.Name, "Boss") then
-                return v
-            end
-        end
+       MinimizeButton({
+       Image = "https://tr.rbxcdn.com/180DAY-06ee6472e0fb2bccc53d21ef97ea9d55/150/150/Image/Webp/noFilter",
+       Size = {60, 15},
+       Color = Color3.fromRGB(0, 255, 200),
+       Corner = true,
+       Stroke = false,
+       StrokeColor = Color3.fromRGB(255, 0, 0)
+      })
+      
+------ Tab
+     local Tab1o = MakeTab({Name = "Script Farm Boss"})
+     local Tab2o = MakeTab({Name = "Script Speed Super"})
+     local Tab3o = MakeTab({Name = "ZoomMod"})
+     
+------- BUTTON
+    
+    AddButton(Tab1o, {
+     Name = "Start Farm",
+    Callback = function()
+	  local Settings = {
+  JoinTeam = "Haki";
+  Translator = true; -- true/false
+}
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/farmboss."))(Settings)
+  end
+  })
+
+    AddButton(Tab2o, {
+    Name = "Start S (Speed + Farm)",
+    Callback = function()
+
+        -- Chinh toc do chay
+        local player = game.Players.LocalPlayer
+        local char = player.Character or player.CharacterAdded:Wait()
+        local humanoid = char:WaitForChild("Humanoid")
+
+        humanoid.WalkSpeed = 50 --  chinh so nay (16 mac dinh)
+
+        -- Settings farm
+        local Settings = {
+            JoinTeam = "Haki";
+            Translator = true;
+        }
+
+        -- Load script farm boss
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/speed"))(Settings)
+
     end
-end
+})
 
--- teleport + đánh
-spawn(function()
-    while wait(0.1) do
-        if AutoFarm then
-            local boss = GetBoss()
-            
-            if boss then
-                local player = game.Players.LocalPlayer
-                local char = player.Character
-                
-                if char and char:FindFirstChild("HumanoidRootPart") then
-                    
-                    -- 🚀 teleport tới boss
-                    char.HumanoidRootPart.CFrame =
-                        boss.HumanoidRootPart.CFrame * CFrame.new(0, 0, 3)
+local currentSize = 100 -- size ban dau
 
-                    -- 🗡️ auto đánh (click)
-                    game:GetService("VirtualUser"):ClickButton1(Vector2.new(0,0))
+-- Tang size
+AddButton(Tab3o, {
+    Name = "Size +2",
+    Callback = function()
+        currentSize = currentSize + 2
 
-                    -- ⚡ spam skill (Z X C V)
-                    game:GetService("VirtualInputManager"):SendKeyEvent(true, "Z", false, game)
-                    game:GetService("VirtualInputManager"):SendKeyEvent(true, "X", false, game)
-                    game:GetService("VirtualInputManager"):SendKeyEvent(true, "C", false, game)
-                    game:GetService("VirtualInputManager"):SendKeyEvent(true, "V", false, game)
-                end
-            end
-        end
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/resize.lua"))()({
+            Size = currentSize
+        })
     end
-end)
+})
+
+-- Giam size
+AddButton(Tab3o, {
+    Name = "Size -2",
+    Callback = function()
+        currentSize = currentSize - 2
+
+        if currentSize < 0.5 then
+            currentSize = 0.5 -- kh
+        end
+
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/resize.lua"))()({
+            Size = currentSize
+        })
+    end
+})
