@@ -32,6 +32,7 @@ loadstring(game:HttpGet(("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V
 ------ Tab
      local Tab1o = MakeTab({Name = "Script Farm Boss"})
      local Tab2o = MakeTab({Name = "Script Speed Super"})
+     local Tab3o = MakeTab({Name = "ZoomMod"})
      
 ------- BUTTON
     
@@ -67,5 +68,35 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/r
         -- Load script farm boss
         loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/speed"))(Settings)
 
+    end
+})
+
+local currentSize = 100 -- size ban dau
+
+-- Tang size
+AddButton(Tab3o, {
+    Name = "Size +2",
+    Callback = function()
+        currentSize = currentSize + 2
+
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/resize.lua"))()({
+            Size = currentSize
+        })
+    end
+})
+
+-- Giam size
+AddButton(Tab3o, {
+    Name = "Size -2",
+    Callback = function()
+        currentSize = currentSize - 2
+
+        if currentSize < 0.5 then
+            currentSize = 0.5 -- kh
+        end
+
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/resize.lua"))()({
+            Size = currentSize
+        })
     end
 })
