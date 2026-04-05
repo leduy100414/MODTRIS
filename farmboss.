@@ -1,0 +1,50 @@
+-- bật / tắt
+local AutoFarm = false
+
+b:Toggle("💀 Auto Farm Boss", function(v)
+    AutoFarm = v
+end)
+
+-- tìm boss
+function GetBoss()
+    for _, v in pairs(workspace.Enemies:GetChildren()) do
+        if v:FindFirstChild("Humanoid") 
+        and v:FindFirstChild("HumanoidRootPart") 
+        and v.Humanoid.Health > 0 then
+            
+            if string.find(v.Name, "Boss") then
+                return v
+            end
+        end
+    end
+end
+
+-- teleport + đánh
+spawn(function()
+    while wait(0.1) do
+        if AutoFarm then
+            local boss = GetBoss()
+            
+            if boss then
+                local player = game.Players.LocalPlayer
+                local char = player.Character
+                
+                if char and char:FindFirstChild("HumanoidRootPart") then
+                    
+                    -- 🚀 teleport tới boss
+                    char.HumanoidRootPart.CFrame =
+                        boss.HumanoidRootPart.CFrame * CFrame.new(0, 0, 3)
+
+                    -- 🗡️ auto đánh (click)
+                    game:GetService("VirtualUser"):ClickButton1(Vector2.new(0,0))
+
+                    -- ⚡ spam skill (Z X C V)
+                    game:GetService("VirtualInputManager"):SendKeyEvent(true, "Z", false, game)
+                    game:GetService("VirtualInputManager"):SendKeyEvent(true, "X", false, game)
+                    game:GetService("VirtualInputManager"):SendKeyEvent(true, "C", false, game)
+                    game:GetService("VirtualInputManager"):SendKeyEvent(true, "V", false, game)
+                end
+            end
+        end
+    end
+end)
