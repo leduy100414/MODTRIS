@@ -65,7 +65,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/r
         }
 
         -- Load script farm boss
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/farmboss."))(Settings)
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/speed"))(Settings)
 
     end
 })
