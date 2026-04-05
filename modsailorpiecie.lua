@@ -1,4 +1,4 @@
-loadstring(game:HttpGet(("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua")))()
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/modsailorpiecie.lua")))()
 
        local Window = MakeWindow({
          Hub = {
@@ -44,10 +44,6 @@ loadstring(game:HttpGet(("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V
   Translator = true; -- true/false
 }
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/farmboss."))(Settings)
-  end
-  })
-
     AddButton(Tab2o, {
     Name = "Start S (Speed + Farm)",
     Callback = function()
@@ -65,8 +61,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/r
             Translator = true;
         }
 
-        -- Load script farm boss
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/speed"))(Settings)
+
 
     end
 })
@@ -78,8 +73,6 @@ AddButton(Tab3o, {
     Name = "Size +2",
     Callback = function()
         currentSize = currentSize + 2
-
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/resize.lua"))()({
             Size = currentSize
         })
     end
@@ -94,8 +87,6 @@ AddButton(Tab3o, {
         if currentSize < 0.5 then
             currentSize = 0.5 -- kh
         end
-
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/leduy100414/MODTRIS/refs/heads/main/resize.lua"))()({
             Size = currentSize
         })
     end
